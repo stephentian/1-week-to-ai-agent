@@ -1681,6 +1681,126 @@ async def get_post(post_id: str, db: Session = Depends(get_db)):
 
 ---
 
+## 📦 实战项目：高性能缓存系统 ⭐
+
+### 项目概览
+
+**项目名称**: Cache Demo - Redis缓存策略演示  
+**路径**: `04-数据库技术应用/cache-demo/`  
+**完成度**: ✅ 100%  
+**文件数**: 6个核心文件  
+**代码量**: 800+ 行  
+**技术栈**: Python + Redis + PostgreSQL + FastAPI
+
+### 核心特性
+
+✅ **Redis完整封装** - 基础CRUD + 连接池管理 + 统计监控  
+✅ **三大缓存防护机制** - 穿透/击穿/雪崩解决方案  
+✅ **PostgreSQL连接池** - 慢查询监控 + 性能优化  
+✅ **FastAPI中间件** - `@cached()`装饰器 + 自动缓存失效  
+✅ **性能测试套件** - 对比缓存前后性能提升  
+
+### 项目架构
+
+```
+cache-demo/
+├── redis_cache.py          # Redis客户端封装（500+行）
+│   ├── 基础操作: get/set/delete/exists/ttl
+│   ├── 连接池管理
+│   └── 三大防护: null_cache/mutex_lock/random_ttl
+│
+├── postgres_config.py      # PostgreSQL连接池配置
+│   └── 慢查询事件监听器
+│
+├── caching_middleware.py   # FastAPI缓存中间件
+│   └── @cached() 函数级装饰器
+│
+└── performance_test.py     # 性能测试脚本
+    ├── 基础操作性能对比
+    ├── 缓存穿透防护测试
+    ├── 缓存击穿防护测试
+    └── 缓存雪崩防护测试
+```
+
+### 核心功能详解
+
+#### 1. Redis缓存客户端 (`redis_cache.py`)
+
+```python
+# 三大缓存问题解决方案
+
+# 防穿透：缓存空值
+cache.get_with_null_cache(key, loader_func, ttl=60)
+
+# 防击穿：互斥锁
+cache.get_with_mutex_lock(key, loader_func, lock_timeout=10)
+
+# 防雪崩：随机TTL + 多级缓存
+cache.get_with_random_ttl(key, loader_func, base_ttl=1800)
+```
+
+#### 2. FastAPI缓存装饰器 (`caching_middleware.py`)
+
+```python
+# 使用示例
+@cached(ttl=300, key_prefix="user:")
+def get_user_profile(user_id: int):
+    # 自动缓存结果300秒
+    return db.query(User).get(user_id)
+```
+
+#### 3. 性能测试结果（预期）
+
+| 操作类型 | 无缓存 | 有缓存 | 提升倍数 |
+|----------|--------|--------|----------|
+| 基础GET | ~50ms | ~2ms | 25x |
+| 批量MGET | ~200ms | ~10ms | 20x |
+| 热点查询 | ~100ms | ~3ms | 33x |
+
+### 快速启动
+
+```bash
+# 1. 进入项目目录
+cd 04-数据库技术应用/cache-demo
+
+# 2. 启动Redis和PostgreSQL（Docker）
+docker run -d --name redis -p 6379:6379 redis:7-alpine
+docker run -d --name postgres -p 5432:5432 \
+  -e POSTGRES_PASSWORD=test \
+  postgres:15-alpine
+
+# 3. 安装依赖
+pip install -r requirements.txt
+
+# 4. 运行性能测试
+python performance_test.py
+
+# 5. 查看测试报告
+# 输出包含各项操作的耗时对比和命中率统计
+```
+
+### 验收标准
+
+- [ ] Redis基础操作正常（get/set/delete）
+- [ ] 连接池配置生效（可查看连接数）
+- [ ] 缓存穿透防护有效（空值缓存命中）
+- [ ] 缓存击穿防护有效（互斥锁防止并发）
+- [ ] 缓存雪崩防护有效（TTL随机化）
+- [ ] `@cached()`装饰器正常工作
+- [ ] 性能测试通过（缓存命中率 > 90%）
+
+---
+
+## 🔗 模块导航
+
+<div align="center">
+
+[← **Day 3: 后端开发技能提升**](../03-后端开发技能提升/README.md) | [**Day 5: 运维与部署实践 →**](../05-运维与部署实践/README.md) | [🏠 **返回课程首页**](./01-开发基础与环境配置/README.md)
+
+</div>
+
+---
+
 <div align="center">
 
 **🎓 Day 4 完成！你已掌握双数据库的高效应用！**

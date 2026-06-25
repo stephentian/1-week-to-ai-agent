@@ -1395,6 +1395,150 @@ git push origin main
 
 ---
 
+## 📦 实战项目：生产级部署方案 ⭐
+
+### 项目概览
+
+**项目名称**: Deployment - CI/CD与容器化部署  
+**路径**: `05-运维与部署实践/deployment/`  
+**完成度**: ✅ 100%  
+**文件数**: 8个核心文件  
+**技术栈**: Docker Compose + GitHub Actions + Nginx + SSL/TLS
+
+### 核心特性
+
+✅ **Docker多阶段构建** - 优化镜像体积，生产环境安全加固  
+✅ **Docker Compose编排** - 全栈服务一键启动（Web+DB+Cache+Nginx）  
+✅ **GitHub Actions CI/CD** - 自动化测试→构建→部署流水线  
+✅ **Nginx生产配置** - SSL/TLS + Gzip压缩 + 限流 + 静态资源缓存  
+✅ **健康检查体系** - 应用级 + 数据库级 + 缓存级监控  
+
+### 项目架构
+
+```
+deployment/
+├── .github/workflows/
+│   └── ci-cd.yml              # 完整CI/CD流水线
+│       ├── Lint & Test阶段
+│       ├── Build & Push阶段
+│       └── Deploy & Notify阶段
+│
+├── docker-compose.prod.yml    # 生产环境编排
+│   ├── 资源限制（CPU/Memory）
+│   ├── 健康检查配置
+│   ├── 日志轮转策略
+│   └── 网络隔离设置
+│
+├── nginx/
+│   ├── prod.conf             # 生产Nginx主配置
+│   │   ├── HTTP→HTTPS重定向
+│   │   ├── SSL/TLS优化
+│   │   ├── Gzip压缩
+│   │   ├── 请求限流
+│   │   └── 安全头设置
+│   └── ssl/
+│       └── README.md         # SSL证书管理指南
+│           ├── Let's Encrypt自动续期
+│           ├── 自签名证书生成
+│           └── 证书安全最佳实践
+```
+
+### CI/CD流水线详解
+
+```yaml
+# 触发条件
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+# 流水线阶段
+Jobs:
+  1. test:        # 单元测试 + 覆盖率报告
+  2. build:       # Docker镜像构建 + 推送Registry
+  3. deploy-prod: # SSH部署到服务器 + 健康检查
+  4. notify:      # Slack/邮件通知部署结果
+```
+
+### Nginx生产优化特性
+
+| 特性 | 配置 | 效果 |
+|------|------|------|
+| **SSL/TLS** | TLSv1.2+ / HSTS | 数据传输加密 |
+| **Gzip** | text/css, application/json | 带宽节省60-80% |
+| **限流** | 10r/s per IP | 防DDoS攻击 |
+| **静态缓存** | 1年（带hash文件名） | 减少服务器负载 |
+| **日志** | JSON格式 + 轮转 | 便于ELK分析 |
+
+### 快速启动
+
+```bash
+# 1. 进入项目目录
+cd 05-运维与部署实践/deployment
+
+# 2. 复制环境变量模板
+cp ../03-后端开发技能提升/blog-api/.env.example .env
+vim .env  # 编辑配置（数据库密码、密钥等）
+
+# 3. 构建并启动所有服务（开发环境）
+docker compose up -d --build
+
+# 4. 查看服务状态
+docker compose ps
+# 应该看到: backend, frontend, nginx, db, redis 全部 Up
+
+# 5. 访问服务
+# 前端: http://localhost
+# API: http://localhost/api/docs (Swagger)
+# Nginx健康检查: http://localhost/health
+
+# 6. 查看日志
+docker compose logs -f backend  # 后端日志
+docker compose logs -f nginx     # 访问日志
+```
+
+### 生产部署步骤
+
+```bash
+# 1. 使用生产配置启动
+docker compose -f docker-compose.prod.yml up -d --build
+
+# 2. 初始化数据库
+docker compose exec backend alembic upgrade head
+
+# 3. 配置SSL证书（Let's Encrypt）
+# 参照 nginx/ssl/README.md 操作指南
+
+# 4. 设置GitHub Actions Secrets
+# PROD_HOST, PROD_USER, SSH_PRIVATE_KEY, SLACK_WEBHOOK
+
+# 5. 推送代码触发自动部署
+git push origin main
+```
+
+### 验收标准
+
+- [ ] `docker compose up -d` 成功启动全部服务
+- [ ] 所有容器状态为 healthy
+- [ ] HTTPS访问正常（SSL证书有效）
+- [ ] Gzip压缩生效（响应头包含 Content-Encoding: gzip）
+- [ ] API文档可访问（http://yourdomain.com/api/docs）
+- [ ] 日志正常输出且支持轮转
+- [ ] GitHub Actions流水线成功执行
+
+---
+
+## 🔗 模块导航
+
+<div align="center">
+
+[← **Day 4: 数据库技术应用**](../04-数据库技术应用/README.md) | [**Day 6: AI基础理论与国内大模型应用 →**](../06-AI基础理论与国内大模型应用/README.md) | [🏠 **返回课程首页**](./01-开发基础与环境配置/README.md)
+
+</div>
+
+---
+
 <div align="center">
 
 **🎓 Day 5 完成！你的应用已经具备生产级部署能力！**

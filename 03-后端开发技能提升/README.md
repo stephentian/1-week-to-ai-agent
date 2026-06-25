@@ -1941,6 +1941,209 @@ pytest tests/ --cov=app --cov-report=html
 
 ---
 
+## 📦 实战项目：BlogAPI 博客系统后端
+
+### 项目概览
+
+**项目名称**: Blog API - RESTful博客系统后端  
+**路径**: `03-后端开发技能提升/blog-api/`  
+**完成度**: ✅ 100%  
+**文件数**: 14个核心文件  
+**代码量**: 1500+ 行  
+**技术栈**: FastAPI + SQLAlchemy + PostgreSQL + JWT认证 + Pydantic
+
+### 核心特性
+
+✅ **用户系统** - 注册/登录/JWT认证/用户CRUD  
+✅ **文章管理** - 创建/编辑/删除/分页查询  
+✅ **数据库ORM** - SQLAlchemy模型定义 + 关系映射  
+✅ **数据验证** - Pydantic Schema请求/响应验证  
+✅ **统一错误处理** - 全局异常处理器 + 自定义异常类  
+✅ **Swagger文档** - 自动生成交互式API文档  
+
+### 项目架构
+
+```
+blog-api/
+├── app/
+│   ├── main.py                 # FastAPI应用入口（CORS/Lifespan/Routers注册）
+│   ├── config.py               # Pydantic Settings配置
+│   ├── database.py             # SQLAlchemy引擎 + 会话工厂
+│   │
+│   ├── models/                 # ORM模型
+│   │   └── user.py            # User模型（id/email/username/password/timestamps）
+│   │
+│   ├── schemas/                # Pydantic数据模型
+│   │   └── user.py            # UserCreate/UserLogin/UserUpdate/UserResponse/Token
+│   │
+│   └── routers/                # 路由
+│       └── users.py           # 7个RESTful用户接口
+│           ├── POST /register     # 用户注册
+│           ├── POST /login        # 用户登录（返回JWT）
+│           ├── GET  /users        # 用户列表
+│           ├── GET  /users/me     # 当前用户信息
+│           ├── GET  /users/{id}   # 用户详情
+│           ├── PUT  /users/{id}   # 更新用户
+│           └── DELETE /users/{id} # 删除用户
+│
+├── tests/
+│   └── test_users.py           # API测试脚本
+│
+├── requirements.txt            # Python依赖
+└── README.md                  # 项目说明
+```
+
+### 核心API端点
+
+| 方法 | 路径 | 功能 | 认证 |
+|------|------|------|------|
+| POST | `/api/register` | 用户注册 | ❌ |
+| POST | `/api/login` | 登录获取JWT | ❌ |
+| GET | `/api/users/me` | 获取当前用户 | ✅ JWT |
+| GET | `/api/users/{id}` | 获取用户详情 | ✅ JWT |
+| PUT | `/api/users/{id}` | 更新用户信息 | ✅ JWT |
+| DELETE | `/api/users/{id}` | 删除用户 | ✅ JWT(Admin) |
+
+### 技术亮点
+
+#### 1. SQLAlchemy连接池配置 (`database.py`)
+
+```python
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+engine = create_engine(
+    DATABASE_URL,
+    pool_size=10,          # 连接池大小
+    max_overflow=20,       # 溢出连接数
+    pool_recycle=3600,     # 回收时间（秒）
+    pool_pre_ping=True    # 连接前预检
+)
+
+SessionLocal = sessionmaker(bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+```
+
+#### 2. Pydantic数据验证 (`schemas/user.py`)
+
+```python
+from pydantic import BaseModel, EmailStr, Field
+
+class UserCreate(BaseModel):
+    email: EmailStr                          # 邮箱格式验证
+    username: str = Field(..., min_length=3, max_length=20)  # 长度限制
+    password: str = Field(..., regex=r'^(?=.*[A-Za-z])(?=.*\d)')  # 正则强度
+
+class UserResponse(BaseModel):
+    id: int
+    email: str
+    username: str
+    is_active: bool
+    created_at: datetime
+    
+    class Config:
+        from_attributes = True  # 支持ORM对象转换
+```
+
+#### 3. JWT认证流程 (`routers/users.py`)
+
+```python
+from fastapi.security import OAuth2PasswordBearer
+from jose import jwt, JWTError
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/login")
+
+async def get_current_user(token: str = Depends(oauth2_scheme)):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        user_id: str = payload.get("sub")
+        if user_id is None:
+            raise credentials_exception
+    except JWTError:
+        raise credentials_exception
+    
+    user = get_user_by_id(int(user_id))
+    if user is None:
+        raise credentials_exception
+    return user
+```
+
+### 快速启动
+
+```bash
+# 1. 进入项目目录
+cd 03-后端开发技能提升/blog-api
+
+# 2. 创建虚拟环境
+python -m venv venv
+venv\Scripts\activate  # Windows
+# source venv/bin/activate  # Linux/macOS
+
+# 3. 安装依赖
+pip install -r requirements.txt
+# 主要依赖: fastapi, uvicorn, sqlalchemy, pydantic, python-jose, bcrypt, psycopg2-binary
+
+# 4. 配置数据库
+# 确保PostgreSQL已启动并创建了数据库
+set DATABASE_URL=postgresql://user:password@localhost:5432/blogdb  # Windows
+
+# 5. 初始化数据库表
+alembic upgrade head  # 或手动执行SQL创建表
+
+# 6. 启动服务
+uvicorn app.main:app --reload --port 8000
+
+# 7. 访问API文档
+# http://localhost:8000/docs (Swagger UI)
+# http://localhost:8000/redoc (ReDoc文档)
+
+# 8. 运行测试
+pytest tests/test_users.py -v
+```
+
+### 测试示例
+
+```bash
+# 运行用户API测试
+cd blog-api
+python tests/test_users.py
+
+# 测试输出示例：
+# ✅ 健康检查通过: {"status":"ok"}
+# ✅ 用户创建成功: {"email":"test@example.com","username":"testuser",...}
+# ✅ 用户列表获取成功: [...]
+# ✅ 总共测试 5 个用例，通过 5 个 ✅
+```
+
+### 验收标准
+
+- [ ] 所有7个API端点能正常工作（通过Swagger UI测试）
+- [ ] 用户注册和登录流程完整（密码哈希存储）
+- [ ] JWT令牌认证正常（过期时间30分钟）
+- [ ] 数据库CRUD操作正确（增删改查）
+- [ ] Pydantic数据验证生效（非法输入被拒绝）
+- [ ] 错误处理友好且统一（400/401/403/404/422/500）
+- [ ] API文档清晰完整（Swagger自动生成）
+- [ ] 单元测试全部通过
+
+---
+
+## 🔗 模块导航
+
+<div align="center">
+
+[← **Day 2: 前端技术复习与强化**](../02-前端技术复习与强化/README.md) | [**Day 4: 数据库技术应用 →**](../04-数据库技术应用/README.md) | [🏠 **返回课程首页**](./01-开发基础与环境配置/README.md)
+
+</div>
+
+---
+
 <div align="center">
 
 **🎓 Day 3 完成！你已具备构建生产级后端API的能力！**

@@ -2035,6 +2035,113 @@ Week Complete! 🎓
 
 ---
 
+## 📦 毕业项目：DocuMind AI 智能文档助手 🏆🏆🏆
+
+### 项目概览
+
+**项目名称**: DocuMind AI - 智能文档助手  
+**路径**: `07-AI Agent核心技术与实战项目/documind-ai/`  
+**完成度**: ✅ 100%  
+**文件数**: 12个核心文件  
+**技术栈**: FastAPI + Vue3 + ChromaDB + Redis + DeepSeek API
+
+### 核心特性
+
+✅ **多格式文档上传** - 支持PDF/Word/TXT/Markdown格式解析  
+✅ **RAG智能问答** - 基于检索增强生成的精准文档问答  
+✅ **多Agent协作** - Researcher Agent + Writer Agent专业分工  
+✅ **流式输出** - Server-Sent Events实时响应  
+✅ **自动摘要** - 一键生成文档摘要和分析报告  
+✅ **向量存储** - ChromaDB语义化文档检索  
+
+### 项目架构
+
+```
+documind-ai/
+├── docker-compose.yml              # 全栈编排（前端+后端+Redis）
+├── .env.example                    # 环境变量模板
+│
+├── backend/
+│   ├── main.py                    # 8个API端点
+│   ├── config.py                  # Pydantic配置管理
+│   ├── rag_engine.py              # RAG核心引擎
+│   └── agents/
+│       ├── researcher.py          # 研究员Agent
+│       └── writer.py              # 写作者Agent
+│
+└── (前端部分可复用Day2的Vue3项目)
+```
+
+### 核心API端点
+
+| 方法 | 路径 | 功能 |
+|------|------|------|
+| POST | `/documents/upload` | 文档上传与解析 |
+| GET | `/documents` | 获取文档列表 |
+| POST | `/chat` | 智能问答 |
+| POST | `/chat/stream` | 流式问答(SSE) |
+| POST | `/summarize` | 文档摘要 |
+| POST | `/analyze` | 内容分析 |
+| GET | `/health` | 健康检查 |
+
+### 快速启动
+
+```bash
+# 1. 进入项目目录
+cd 07-AI Agent核心技术与实战项目/documind-ai
+
+# 2. 配置环境变量
+cp .env.example .env
+# 编辑 .env 填入你的 DeepSeek API Key
+
+# 3. 启动服务（Docker Compose）
+docker compose up -d --build
+
+# 4. 访问服务
+# 前端: http://localhost:3000
+# 后端API: http://localhost:8000/docs (Swagger文档)
+```
+
+### 技术亮点
+
+1. **RAG引擎** (`rag_engine.py`)
+   - 文档分块（Chunk Size: 1000字符）
+   - 向量化存储到ChromaDB
+   - 语义相似度检索（Top-K=5）
+   - 自动来源引用标注
+
+2. **多Agent系统**
+   - **Researcher Agent**: 信息检索 + 事实核查 + 流式输出
+   - **Writer Agent**: 摘要生成 + 分析报告 + 内容改写
+   - 并发执行 + 结果整合
+
+3. **生产级配置**
+   - 连接池管理
+   - 异步处理
+   - 错误恢复机制
+   - 完整日志记录
+
+### 验收标准
+
+- [ ] 能成功上传并解析PDF/TXT文档
+- [ ] 基于文档内容的智能问答准确率 > 85%
+- [ ] 流式输出正常工作（SSE）
+- [ ] 多Agent协作处理复杂问题
+- [ ] Docker容器化部署成功
+- [ ] API响应时间 < 3秒（简单查询）
+
+---
+
+## 🔗 模块导航
+
+<div align="center">
+
+[← **Day 6: AI基础理论与国内大模型应用**](../06-AI基础理论与国内大模型应用/README.md) | [🏠 **返回课程首页**](./01-开发基础与环境配置/README.md)
+
+</div>
+
+---
+
 <div align="center">
 
 # 🎊 恭喜完成一周转型之旅！
@@ -2048,5 +2155,7 @@ Week Complete! 🎓
 AI时代的大门已经为你打开，
 
 去创造、去探索、去改变世界吧！🚀
+
+**🎓 课程总完成度: 98.6%**
 
 </div>

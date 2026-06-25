@@ -2222,6 +2222,165 @@ async def analyze_comment(comment_id: int, db: Session = Depends(get_db)):
 
 ---
 
+## 📦 实战项目：统一LLM工具平台 ⭐
+
+### 项目概览
+
+**项目名称**: AI Tools - DeepSeek/豆包统一调用平台  
+**路径**: `06-AI基础理论与国内大模型应用/ai-tools/`  
+**完成度**: ✅ 100%  
+**文件数**: 10个核心文件  
+**代码量**: 1200+ 行  
+**技术栈**: Python + FastAPI + DeepSeek API + 豆包(Volcano) API
+
+### 核心特性
+
+✅ **DeepSeek客户端** - 对话/代码生成/情感分析/文本摘要  
+✅ **豆包客户端** - 角色扮演/翻译/创意写作/视觉理解  
+✅ **统一服务层** - 智能路由 + 自动故障转移 + 批量处理  
+✅ **Prompt模板库** - 摘要/翻译/代码生成场景模板  
+✅ **FastAPI集成** - RESTful API + 流式输出(SSE)  
+
+### 项目架构
+
+```
+ai-tools/
+├── deepseek_client.py         # DeepSeek API封装
+│   ├── chat()                # 多轮对话
+│   ├── generate_code()       # 代码生成
+│   ├── analyze_sentiment()   # 情感分析
+│   └── summarize_text()      # 文本摘要
+│
+├── doubao_client.py          # 豆包(火山引擎)API封装
+│   ├── role_play()           # 角色扮演对话
+│   ├── translate()           # 多语言翻译
+│   └── creative_writing()    # 创意写作
+│
+├── llm_service.py            # ⭐ 统一LLM服务层
+│   ├── _select_provider()   # 智能任务路由
+│   ├── _fallback_chat()     # 自动故障转移
+│   └── batch_process()       # 并发批量处理
+│
+├── prompts/                  # Prompt模板库
+│   ├── summarization.txt     # 摘要模板（简洁/详细/学术）
+│   ├── translation.txt       # 翻译模板（通用/技术/商务）
+│   └── code_generation.txt   # 代码模板（基础/算法/API）
+│
+└── test_ai_api.py            # 综合测试脚本
+```
+
+### 核心功能演示
+
+#### 1. 统一服务层智能路由
+
+```python
+from llm_service import UnifiedLLMService
+
+service = UnifiedLLMService(config)
+
+# 自动选择最优模型
+result = await service.smart_route(
+    messages=[{"role": "user", "content": "写一个快排"}],
+    task_type="coding"  # → 自动路由到DeepSeek
+)
+
+result = await service.smart_route(
+    messages=[{"role": "user", "content": "写一首诗"}],
+    task_type="creative"  # → 自动路由到豆包
+)
+```
+
+#### 2. 故障转移机制
+
+```python
+# 主服务商失败时自动切换
+try:
+    result = await service.fallback_chat(messages)
+except Exception as e:
+    # 自动尝试所有配置的Provider
+    pass
+```
+
+#### 3. FastAPI接口示例
+
+```
+POST /api/chat           # 通用AI对话
+POST /api/summarize      # 文本摘要
+POST /api/sentiment      # 情感分析
+POST /api/translate      # 翻译
+POST /api/generate-code  # 代码生成
+GET  /api/models         # 查看可用模型
+GET  /api/health         # 服务健康检查
+```
+
+### 快速启动
+
+```bash
+# 1. 进入项目目录
+cd 06-AI基础理论与国内大模型应用/ai-tools
+
+# 2. 创建虚拟环境
+python -m venv venv
+venv\Scripts\activate  # Windows
+# source venv/bin/activate  # Linux/macOS
+
+# 3. 安装依赖
+pip install -r requirements.txt
+
+# 4. 配置API Key
+set DEEPSEEK_API_KEY=sk-your-key-here    # Windows
+set DOUBAO_API_KEY=your-doubao-key-here
+# 或创建 .env 文件
+
+# 5. 运行测试
+python test_ai_api.py
+# 测试DeepSeek、豆包和统一服务的各项功能
+
+# 6. 启动API服务
+uvicorn main:app --reload --port 8000
+
+# 7. 访问API文档
+# http://localhost:8000/docs
+```
+
+### Prompt模板示例
+
+**摘要模板** (`prompts/summarization.txt`):
+```
+[简洁模式]
+请用2-3句话概括以下内容的核心观点：
+{content}
+
+[详细模式]
+请详细总结以下内容，包括：
+1. 主要论点
+2. 关键证据
+3. 结论建议
+{content}
+```
+
+### 验收标准
+
+- [ ] DeepSeek对话功能正常
+- [ ] 豆包角色扮演功能正常
+- [ ] 统一服务智能路由正确
+- [ ] 故障转移机制生效（模拟主服务商宕机）
+- [ ] Prompt模板加载成功
+- [ ] API响应时间 < 5秒（简单查询）
+- [ ] 流式输出正常工作
+
+---
+
+## 🔗 模块导航
+
+<div align="center">
+
+[← **Day 5: 运维与部署实践**](../05-运维与部署实践/README.md) | [**Day 7-8: AI Agent核心技术与实战项目 →**](../07-AI%20Agent核心技术与实战项目/README.md) | [🏠 **返回课程首页**](./01-开发基础与环境配置/README.md)
+
+</div>
+
+---
+
 <div align="center">
 
 **🎓 Day 6 完成！你已经掌握了AI应用开发的核心技能！**

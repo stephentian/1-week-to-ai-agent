@@ -2177,6 +2177,172 @@ pnpm add vue-router pinia
 
 ---
 
+## 📦 实战项目：TodoMVC 待办事项应用
+
+### 项目概览
+
+**项目名称**: Todo App - Vue3待办事项管理应用  
+**路径**: `02-前端技术复习与强化/todo-app/`  
+**完成度**: ✅ 100%  
+**文件数**: 9个核心文件  
+**技术栈**: Vue3 + Vite + Composition API + Pinia + localStorage
+
+### 核心特性
+
+✅ **完整CRUD操作** - 添加/删除/标记完成待办事项  
+✅ **筛选功能** - 全部/已完成/未完成三种视图  
+✅ **本地持久化** - localStorage自动保存，刷新不丢失  
+✅ **统计面板** - 实时显示总数/已完成/剩余数量  
+✅ **批量操作** - 一键清除所有已完成项  
+✅ **过渡动画** - Vue3 `<transition-group>` 平滑效果  
+✅ **响应式设计** - 移动端适配，Flexbox布局  
+
+### 项目架构
+
+```
+todo-app/
+├── src/
+│   ├── App.vue                 # 主应用组件
+│   ├── components/
+│   │   └── TodoItem.vue        # 单个待办项组件
+│   ├── composables/
+│   │   └── useTodo.js          # ⭐ Composable状态管理
+│   ├── assets/
+│   │   └── main.css            # 全局样式
+│   └── main.js                 # 应用入口
+│
+├── index.html                  # HTML入口
+├── package.json                # 依赖配置
+├── vite.config.js              # Vite构建配置
+└── README.md                   # 项目说明
+```
+
+### 核心代码亮点
+
+#### Composable模式 (`useTodo.js`)
+
+```javascript
+// composables/useTodo.js
+import { ref, computed, watch } from 'vue'
+
+export function useTodo() {
+  const todos = ref(JSON.parse(localStorage.getItem('todos') || '[]'))
+  const filter = ref('all') // all | completed | active
+  
+  // 自动持久化
+  watch(todos, (newVal) => {
+    localStorage.setItem('todos', JSON.stringify(newVal))
+  }, { deep: true })
+  
+  const filteredTodos = computed(() => {
+    switch (filter.value) {
+      case 'completed': return todos.value.filter(t => t.completed)
+      case 'active': return todos.value.filter(t => !t.completed)
+      default: return todos.value
+    }
+  })
+  
+  const stats = computed(() => ({
+    total: todos.value.length,
+    completed: todos.value.filter(t => t.completed).length,
+    remaining: todos.value.filter(t => !t.completed).length
+  }))
+  
+  function addTodo(text) { /* ... */ }
+  function toggleTodo(id) { /* ... */ }
+  function deleteTodo(id) { /* ... */ }
+  
+  return { todos, filter, filteredTodos, stats, addTodo, toggleTodo, deleteTodo }
+}
+```
+
+#### 组件使用示例 (`App.vue`)
+
+```vue
+<script setup>
+import { useTodo } from './composables/useTodo'
+
+const { filteredTodos, stats, addTodo, toggleTodo, deleteTodo } = useTodo()
+const newTodo = ref('')
+</script>
+
+<template>
+  <div class="todo-app">
+    <form @submit.prevent="addTodo(newTodo)">
+      <input v-model="newTodo" placeholder="添加新的待办事项..." />
+    </form>
+    
+    <div class="stats">
+      共 {{ stats.total }} 项，已完成 {{ stats.completed }} 项
+    </div>
+    
+    <transition-group name="list" tag="ul">
+      <li v-for="todo in filteredTodos" :key="todo.id">
+        <input :checked="todo.completed" @change="toggleTodo(todo.id)" />
+        <span>{{ todo.text }}</span>
+        <button @click="deleteTodo(todo.id)">×</button>
+      </li>
+    </transition-group>
+  </div>
+</template>
+```
+
+### 快速启动
+
+```bash
+# 1. 进入项目目录
+cd 02-前端技术复习与强化/todo-app
+
+# 2. 安装依赖（首次运行）
+npm install
+# 或使用 pnpm install（推荐）
+
+# 3. 启动开发服务器
+npm run dev
+# 或 pnpm dev
+
+# 4. 访问应用
+# http://localhost:5173 (Vite默认端口)
+
+# 5. 构建生产版本
+npm run build
+# 输出目录: dist/
+
+# 6. 预览生产构建
+npm run preview
+```
+
+### 功能演示
+
+1. **添加待办**: 在输入框输入内容，按回车或点击添加按钮
+2. **标记完成**: 点击复选框切换完成状态，文字会显示删除线
+3. **删除待办**: 点击右侧 × 按钮删除单项
+4. **筛选视图**: 点击顶部筛选按钮（全部/已完成/未完成）
+5. **批量清除**: 点击"清除已完成"按钮一键删除所有已完成项
+6. **数据持久化**: 刷新页面后数据自动从localStorage恢复
+
+### 验收标准
+
+- [ ] 能正常添加、删除、标记待办事项
+- [ ] 筛选功能正确工作（全部/已完成/未完成）
+- [ ] 刷新页面后数据保持（localStorage生效）
+- [ ] 移动端显示正常（响应式布局）
+- [ ] 有平滑的过渡动画效果
+- [ ] 统计面板实时更新
+- [ ] 代码符合Vue3 Composition API最佳实践
+
+---
+
+## 🔗 模块导航
+
+<div align="center">
+
+[← **Day 1: 开发基础与环境配置**](../01-开发基础与环境配置/README.md) | [**Day 3: 后端开发技能提升 →**](../03-后端开发技能提升/README.md) | [🏠 **返回课程首页**](./01-开发基础与环境配置/README.md)
+
+</div>
+
+---
+
 <div align="center">
 
 **🎓 Day 2 完成！你已掌握现代前端开发的核心技能！**
