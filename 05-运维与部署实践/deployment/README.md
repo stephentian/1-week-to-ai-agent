@@ -1,7 +1,7 @@
 # Day 5 实战项目：生产级部署方案
 
-> **项目名称**: deployment  
-> **项目描述**: 包含CI/CD流水线、Docker生产配置、Nginx反向代理的完整部署方案  
+> **项目名称**: deployment
+> **项目描述**: 包含CI/CD流水线、Docker生产配置、Nginx反向代理的完整部署方案
 > **技术栈**: Docker + GitHub Actions + Nginx + SSL
 
 ---

@@ -1,6 +1,6 @@
 # Day 1 实战项目：AI Agent 开发环境搭建
 
-> **项目名称**: ai-agent-starter  
+> **项目名称**: ai-agent-starter
 > **项目描述**: 一个完整的AI Agent开发环境模板，集成前后端开发和Docker容器化
 
 ---
@@ -78,18 +78,18 @@ docker-compose down
 ## ✅ 功能验证清单
 
 ### 后端验证
-- [ ] `http://localhost:8000` 返回欢迎信息
-- [ ] `http://localhost:8000/health` 返回健康状态
-- [ ] `http://localhost:8000/docs` 显示 Swagger UI 文档
+- [ ]`http://localhost:8000` 返回欢迎信息
+- [ ]`http://localhost:8000/health` 返回健康状态
+- [ ]`http://localhost:8000/docs` 显示 Swagger UI 文档
 
 ### 前端验证
-- [ ] `http://localhost:5173` 或 `http://localhost:3000` 显示前端页面
+- [ ]`http://localhost:5173` 或`http://localhost:3000` 显示前端页面
 - [ ] 页面标题显示正确
 - [ ] 能看到"Hello AI Agent!"文字
 
 ### Docker 验证
-- [ ] `docker-compose up -d` 成功启动所有服务
-- [ ] `docker-compose ps` 显示所有容器运行中
+- [ ]`docker-compose up -d` 成功启动所有服务
+- [ ]`docker-compose ps` 显示所有容器运行中
 - [ ] 所有服务均可正常访问
 
 ---
@@ -122,9 +122,9 @@ docker-compose down
 ## 📖 下一步
 
 完成本项目搭建后，你已具备：
-✅ Git 版本控制能力  
-✅ Python 开发环境  
-✅ Node.js 前端环境  
-✅ Docker 容器化能力  
+✅ Git 版本控制能力
+✅ Python 开发环境
+✅ Node.js 前端环境
+✅ Docker 容器化能力
 
 **继续学习**: [Day 2: 前端技术复习与强化](../02-前端技术复习与强化/README.md)

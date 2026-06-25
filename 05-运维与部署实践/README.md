@@ -1,6 +1,6 @@
 # Day 5: 运维与部署实践 🐳
 
-> **时间分配**: 0.5天（4-5小时）  
+> **时间分配**: 0.5天（4-5小时）
 > **核心目标**: 掌握Docker容器化部署、CI/CD流程和生产环境配置
 
 ---
@@ -20,11 +20,11 @@
 
 ### 今日完成后，你将能够：
 
-✅ **编写Docker Compose** - 编排多容器应用栈（Web+DB+Cache）  
-✅ **配置Nginx** - 反向代理、SSL证书、静态资源服务  
-✅ **搭建CI/CD** - 自动化测试、构建、部署流程  
-✅ **监控应用** - 日志收集、性能指标、健康检查  
-✅ **生产部署** - 环境变量管理、安全加固、备份策略  
+✅ **编写Docker Compose** - 编排多容器应用栈（Web+DB+Cache）
+✅ **配置Nginx** - 反向代理、SSL证书、静态资源服务
+✅ **搭建CI/CD** - 自动化测试、构建、部署流程
+✅ **监控应用** - 日志收集、性能指标、健康检查
+✅ **生产部署** - 环境变量管理、安全加固、备份策略
 
 ---
 
@@ -1220,7 +1220,7 @@ docker compose exec redis redis-cli ping
 ```
 
 **检验标准**:
-- [ ] `docker compose up -d` 能成功启动全部服务
+- [ ]`docker compose up -d` 能成功启动全部服务
 - [ ] 所有容器状态为 healthy 或 up
 - [ ] 前端页面能正常访问（http://localhost）
 - [ ] 后端API能正常工作（http://localhost/api/docs）
@@ -1332,35 +1332,35 @@ git push origin main
 
 ### 关键知识点检测
 
-1. **Docker Compose中 `restart: unless-stopped` 的含义？**
-   - A. 不重启
-   - B. 除非手动停止，否则总是重启
-   - C. 只在出错时重启
-   - D. 永远不停止
+1. **Docker Compose中`restart: unless-stopped` 的含义？**
+ - A. 不重启
+ - B. 除非手动停止，否则总是重启
+ - C. 只在出错时重启
+ - D. 永远不停止
 
 2. **Nginx作为反向代理的优势？（选择所有适用）**
-   - A. 负载均衡
-   - B. SSL终结
-   - C. 静态资源缓存
-   - D. 以上都是
+ - A. 负载均衡
+ - B. SSL终结
+ - C. 静态资源缓存
+ - D. 以上都是
 
 3. **CI/CD中，什么时候应该运行集成测试？**
-   - A. 只在本地开发时
-   - B. 每次代码提交时
-   - C. 仅在发布前
-   - D. 手动触发时
+ - A. 只在本地开发时
+ - B. 每次代码提交时
+ - C. 仅在发布前
+ - D. 手动触发时
 
-4. **为什么生产环境不应该使用 `latest` 标签？**
-   - A. 最新版本可能有bug
-   - B. 无法确定正在运行的版本
-   - C. 回滚困难
-   - D. 以上都是
+4. **为什么生产环境不应该使用`latest` 标签？**
+ - A. 最新版本可能有bug
+ - B. 无法确定正在运行的版本
+ - C. 回滚困难
+ - D. 以上都是
 
 5. **健康检查（Health Check）的主要目的？**
-   - A. 监控CPU使用率
-   - B. 检测服务是否正常运行
-   - C. 收集日志
-   - D. 备份数据
+ - A. 监控CPU使用率
+ - B. 检测服务是否正常运行
+ - C. 收集日志
+ - D. 备份数据
 
 ### 答案
 
@@ -1399,19 +1399,19 @@ git push origin main
 
 ### 项目概览
 
-**项目名称**: Deployment - CI/CD与容器化部署  
-**路径**: `05-运维与部署实践/deployment/`  
-**完成度**: ✅ 100%  
-**文件数**: 8个核心文件  
+**项目名称**: Deployment - CI/CD与容器化部署
+**路径**:`05-运维与部署实践/deployment/`
+**完成度**: ✅ 100%
+**文件数**: 8个核心文件
 **技术栈**: Docker Compose + GitHub Actions + Nginx + SSL/TLS
 
 ### 核心特性
 
-✅ **Docker多阶段构建** - 优化镜像体积，生产环境安全加固  
-✅ **Docker Compose编排** - 全栈服务一键启动（Web+DB+Cache+Nginx）  
-✅ **GitHub Actions CI/CD** - 自动化测试→构建→部署流水线  
-✅ **Nginx生产配置** - SSL/TLS + Gzip压缩 + 限流 + 静态资源缓存  
-✅ **健康检查体系** - 应用级 + 数据库级 + 缓存级监控  
+✅ **Docker多阶段构建** - 优化镜像体积，生产环境安全加固
+✅ **Docker Compose编排** - 全栈服务一键启动（Web+DB+Cache+Nginx）
+✅ **GitHub Actions CI/CD** - 自动化测试→构建→部署流水线
+✅ **Nginx生产配置** - SSL/TLS + Gzip压缩 + 限流 + 静态资源缓存
+✅ **健康检查体系** - 应用级 + 数据库级 + 缓存级监控
 
 ### 项目架构
 
@@ -1519,7 +1519,7 @@ git push origin main
 
 ### 验收标准
 
-- [ ] `docker compose up -d` 成功启动全部服务
+- [ ]`docker compose up -d` 成功启动全部服务
 - [ ] 所有容器状态为 healthy
 - [ ] HTTPS访问正常（SSL证书有效）
 - [ ] Gzip压缩生效（响应头包含 Content-Encoding: gzip）

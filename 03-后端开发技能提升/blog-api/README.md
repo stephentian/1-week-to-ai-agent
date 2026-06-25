@@ -1,7 +1,7 @@
 # Day 3 实战项目：博客 REST API
 
-> **项目名称**: blog-api  
-> **项目描述**: 使用FastAPI构建的生产级博客后端API服务  
+> **项目名称**: blog-api
+> **项目描述**: 使用FastAPI构建的生产级博客后端API服务
 > **技术栈**: Python 3.11 + FastAPI + SQLAlchemy + SQLite/PostgreSQL
 
 ---
@@ -100,13 +100,13 @@ docker-compose up -d
 
 | 方法 | 端点 | 描述 | 认证 |
 |------|------|------|------|
-| POST | `/api/users/` | 注册新用户 | 否 |
-| POST | `/api/token` | 登录获取Token | 否 |
-| GET | `/api/users/` | 获取用户列表 | 是 |
-| GET | `/api/users/me` | 获取当前用户信息 | 是 |
-| GET | `/api/users/{id}` | 根据ID获取用户 | 是 |
-| PUT | `/api/users/{id}` | 更新用户信息 | 是 |
-| DELETE | `/api/users/{id}` | 删除用户 | 是 |
+| POST |`/api/users/` | 注册新用户 | 否 |
+| POST |`/api/token` | 登录获取Token | 否 |
+| GET |`/api/users/` | 获取用户列表 | 是 |
+| GET |`/api/users/me` | 获取当前用户信息 | 是 |
+| GET |`/api/users/{id}` | 根据ID获取用户 | 是 |
+| PUT |`/api/users/{id}` | 更新用户信息 | 是 |
+| DELETE |`/api/users/{id}` | 删除用户 | 是 |
 
 ---
 

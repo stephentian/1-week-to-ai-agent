@@ -1,6 +1,6 @@
 # Day 1: 开发基础与环境配置 ⚙️
 
-> **时间分配**: 1天（8-10小时）  
+> **时间分配**: 1天（8-10小时）
 > **核心目标**: 搭建完整的AI Agent开发环境，掌握核心工具链的使用
 
 ---
@@ -22,11 +22,11 @@
 
 ### 今日完成后，你将能够：
 
-✅ **熟练使用Trae IDE** - 掌握AI辅助编码、项目管理、调试功能  
-✅ **掌握Git工作流** - 独立完成代码版本管理、分支操作、协作流程  
-✅ **配置Python开发环境** - 使用pyenv/conda管理多版本Python  
-✅ **理解Node.js生态** - 掌握npm/pnpm包管理和NVM版本控制  
-✅ **使用Docker容器化** - 能够编写Dockerfile、运行容器、管理镜像  
+✅ **熟练使用Trae IDE** - 掌握AI辅助编码、项目管理、调试功能
+✅ **掌握Git工作流** - 独立完成代码版本管理、分支操作、协作流程
+✅ **配置Python开发环境** - 使用pyenv/conda管理多版本Python
+✅ **理解Node.js生态** - 掌握npm/pnpm包管理和NVM版本控制
+✅ **使用Docker容器化** - 能够编写Dockerfile、运行容器、管理镜像
 
 ---
 
@@ -141,11 +141,11 @@ def merge_sort(arr):
 
 | 操作 | Windows/Linux | macOS | 说明 |
 |------|---------------|-------|------|
-| AI对话 | `Ctrl+Shift+I` | `Cmd+Shift+I` | 打开AI助手面板 |
-| 代码补全 | `Tab` | `Tab` | 接受AI建议 |
-| 快速修复 | `Ctrl+.` | `Cmd+.` | 显示修复建议 |
-| 格式化 | `Shift+Alt+F` | `Shift+Option+F` | 格式化当前文件 |
-| 终端 | `Ctrl+\`` | `Ctrl+\`` | 打开集成终端 |
+| AI对话 |`Ctrl+Shift+I` |`Cmd+Shift+I` | 打开AI助手面板 |
+| 代码补全 |`Tab` |`Tab` | 接受AI建议 |
+| 快速修复 |`Ctrl+.` |`Cmd+.` | 显示修复建议 |
+| 格式化 |`Shift+Alt+F` |`Shift+Option+F` | 格式化当前文件 |
+| 终端 |`Ctrl+\`` | `Ctrl+\`` | 打开集成终端 |
 
 ---
 
@@ -259,7 +259,7 @@ git reset --hard HEAD~1     # ⚠️ 谨慎使用，会丢失代码
 
 #### 2.3 .gitignore 配置
 
-创建 `.gitignore` 文件忽略不需要版本控制的文件：
+创建`.gitignore` 文件忽略不需要版本控制的文件：
 
 ```gitignore
 # Python
@@ -331,13 +331,13 @@ git push origin --delete feature/user-auth
 ```
 
 类型说明：
-- `feat`: 新功能
-- `fix`: Bug修复
-- `docs`: 文档变更
-- `style`: 代码格式调整（不影响功能）
-- `refactor`: 重构
-- `test`: 测试相关
-- `chore`: 构建/工具链相关
+-`feat`: 新功能
+-`fix`: Bug修复
+-`docs`: 文档变更
+-`style`: 代码格式调整（不影响功能）
+-`refactor`: 重构
+-`test`: 测试相关
+-`chore`: 构建/工具链相关
 
 示例：
 ```
@@ -358,10 +358,10 @@ Closes #123
 
 在AI Agent开发中，Python是**绝对主流**的语言：
 
-✅ **丰富的AI生态** - PyTorch、TensorFlow、LangChain等  
-✅ **简洁易读** - 伪代码般的语法，降低认知负担  
-✅ **强大的数据处理** - NumPy、Pandas、Polars  
-✅ **活跃的社区** - 遇到问题容易找到解决方案  
+✅ **丰富的AI生态** - PyTorch、TensorFlow、LangChain等
+✅ **简洁易读** - 伪代码般的语法，降低认知负担
+✅ **强大的数据处理** - NumPy、Pandas、Polars
+✅ **活跃的社区** - 遇到问题容易找到解决方案
 
 #### 3.2 版本管理工具选择
 
@@ -519,10 +519,10 @@ flake8 .
 
 虽然Python是AI主力语言，但Node.js在前端工具链和部分后端场景不可或缺：
 
-✅ **前端构建** - Vite、Webpack等打包工具基于Node.js  
-✅ **全栈开发** - Next.js、Nuxt.js等服务端渲染框架  
-✅ **工具脚本** - 项目自动化、代码生成等辅助工具  
-✅ **实时应用** - WebSocket服务、实时通信等场景  
+✅ **前端构建** - Vite、Webpack等打包工具基于Node.js
+✅ **全栈开发** - Next.js、Nuxt.js等服务端渲染框架
+✅ **工具脚本** - 项目自动化、代码生成等辅助工具
+✅ **实时应用** - WebSocket服务、实时通信等场景
 
 #### 4.2 NVM 版本管理
 
@@ -1072,9 +1072,9 @@ git commit -m "feat: 添加Docker容器化配置"
 ```
 
 **检验标准**:
-- [ ] `docker-compose up -d` 能一键启动全部服务
+- [ ]`docker-compose up -d` 能一键启动全部服务
 - [ ] 所有服务都能正常访问
-- [ ] `docker-compose ps` 显示所有服务状态为Up
+- [ ]`docker-compose ps` 显示所有服务状态为Up
 - [ ] 日志无严重错误输出
 
 ---
@@ -1110,68 +1110,68 @@ git commit -m "feat: 添加Docker容器化配置"
 ### 选择题（每题10分，共100分）
 
 1. **Git中，`git add` 的作用是什么？**
-   - A. 提交代码到远程仓库
-   - B. 将文件添加到暂存区
-   - C. 创建新的分支
-   - D. 查看代码差异
+ - A. 提交代码到远程仓库
+ - B. 将文件添加到暂存区
+ - C. 创建新的分支
+ - D. 查看代码差异
 
 2. **以下哪个不是Docker的核心概念？**
-   - A. Image（镜像）
-   - B. Container（容器）
-   - C. Volume（卷）
-   - D. Namespace（命名空间）⚠️ 这是Linux概念
+ - A. Image（镜像）
+ - B. Container（容器）
+ - C. Volume（卷）
+ - D. Namespace（命名空间）⚠️ 这是Linux概念
 
 3. **pnpm相比npm的主要优势是什么？**
-   - A. 功能更多
-   - B. 速度更快且节省磁盘空间
-   - C. 社区更大
-   - D. 支持更多语言
+ - A. 功能更多
+ - B. 速度更快且节省磁盘空间
+ - C. 社区更大
+ - D. 支持更多语言
 
 4. **Python虚拟环境的作用是什么？**
-   - A. 加速代码运行
-   - B. 隔离项目依赖，避免冲突
-   - C. 自动安装所有库
-   - D. 代码加密保护
+ - A. 加速代码运行
+ - B. 隔离项目依赖，避免冲突
+ - C. 自动安装所有库
+ - D. 代码加密保护
 
-5. **Dockerfile中 `COPY` 和 `ADD` 指令的区别？**
-   - A. 没有区别
-   - B. ADD支持URL和自动解压tar包
-   - C. COPY速度更快
-   - D. COPY支持通配符
+5. **Dockerfile中`COPY` 和`ADD` 指令的区别？**
+ - A. 没有区别
+ - B. ADD支持URL和自动解压tar包
+ - C. COPY速度更快
+ - D. COPY支持通配符
 
-6. **`docker-compose up -d` 中 `-d` 参数的含义？**
-   - A. 调试模式
-   - B. 后台运行
-   - C. 删除容器
-   - D. 详细日志
+6. **`docker-compose up -d` 中`-d` 参数的含义？**
+ - A. 调试模式
+ - B. 后台运行
+ - C. 删除容器
+ - D. 详细日志
 
 7. **NVM的主要用途是什么？**
-   - A. 管理npm包
-   - B. 管理Node.js版本
-   - C. 运行Node.js脚本
-   - D. 打包Node.js应用
+ - A. 管理npm包
+ - B. 管理Node.js版本
+ - C. 运行Node.js脚本
+ - D. 打包Node.js应用
 
 8. **`.gitignore` 文件的作用？**
-   - A. 忽略代码错误
-   - B. 指定不被Git追踪的文件
-   - C. 自动生成文档
-   - D. 配置Git用户信息
+ - A. 忽略代码错误
+ - B. 指定不被Git追踪的文件
+ - C. 自动生成文档
+ - D. 配置Git用户信息
 
 9. **以下哪个是Python推荐的依赖管理工具？**
-   - A. pip + requirements.txt
-   - B. poetry
-   - C. pipenv
-   - D. 以上都是（不同场景适用）
+ - A. pip + requirements.txt
+ - B. poetry
+ - C. pipenv
+ - D. 以上都是（不同场景适用）
 
 10. **Docker容器的特点不包括？**
-    - A. 轻量级
-    - B. 环境一致性
-    - C. 强隔离性（类似虚拟机）⚠️ 容器隔离性不如VM
-    - D. 快速启动
+ - A. 轻量级
+ - B. 环境一致性
+ - C. 强隔离性（类似虚拟机）⚠️ 容器隔离性不如VM
+ - D. 快速启动
 
 ### 答案与解析
 
-1. **答案: B** - `git add` 将工作区的改动添加到暂存区，准备提交。
+1. **答案: B** -`git add` 将工作区的改动添加到暂存区，准备提交。
 
 2. **答案: D** - Namespace是Linux内核概念，不是Docker特有概念（虽然Docker使用了它）。
 
@@ -1181,11 +1181,11 @@ git commit -m "feat: 添加Docker容器化配置"
 
 5. **答案: B** - ADD额外支持从URL下载文件和自动解压压缩包。
 
-6. **答案: B** - `-d` 表示detached mode（分离模式），即后台运行。
+6. **答案: B** -`-d` 表示detached mode（分离模式），即后台运行。
 
 7. **答案: B** - NVM (Node Version Manager) 用于安装和切换不同版本的Node.js。
 
-8. **答案: B** - `.gitignore` 指定Git应该忽略的文件和目录模式。
+8. **答案: B** -`.gitignore` 指定Git应该忽略的文件和目录模式。
 
 9. **答案: D** - 三种工具各有优劣，可根据团队习惯和项目需求选择。
 
@@ -1211,11 +1211,11 @@ git commit -m "feat: 添加Docker容器化配置"
 ### 遇到的挑战
 记录今天遇到的技术难点及解决方案：
 
-1. **问题**: 
-   **解决**: 
+1. **问题**:
+ **解决**:
 
-2. **问题**: 
-   **解决**: 
+2. **问题**:
+ **解决**:
 
 ### 明日预告
 **Day 2: 前端技术复习与强化** 将涵盖：

@@ -1,7 +1,7 @@
 # Day 2 实战项目：待办事项管理应用 (TodoApp)
 
-> **项目名称**: vue3-todo-app  
-> **项目描述**: 使用Vue3 Composition API构建的现代化待办事项管理应用  
+> **项目名称**: vue3-todo-app
+> **项目描述**: 使用Vue3 Composition API构建的现代化待办事项管理应用
 > **技术栈**: Vue3 + Vite + Pinia + CSS3
 
 ---
@@ -41,7 +41,7 @@ npm run build
 npm run preview
 ```
 
-访问 `http://localhost:5173` 查看应用
+访问`http://localhost:5173` 查看应用
 
 ---
 
@@ -59,7 +59,7 @@ npm run preview
 
 ### 技术特性
 - [x] Vue3 Composition API (`<script setup>`)
-- [x] 响应式数据管理 (`ref`, `computed`, `watch`)
+- [x] 响应式数据管理 (`ref`,`computed`,`watch`)
 - [x] 组合式函数模式 (Composables)
 - [x] 列表过渡动画 (`<transition-group>`)
 - [x] 本地存储持久化

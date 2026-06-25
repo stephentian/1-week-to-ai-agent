@@ -1,6 +1,6 @@
 # Day 3: 后端开发技能提升 🔧
 
-> **时间分配**: 1天（8-10小时）  
+> **时间分配**: 1天（8-10小时）
 > **核心目标**: 掌握Python后端开发，精通FastAPI框架与RESTful API设计
 
 ---
@@ -22,12 +22,12 @@
 
 ### 今日完成后，你将能够：
 
-✅ **运用Python高级特性** - 使用装饰器、上下文管理器、生成器等  
-✅ **掌握异步编程** - 理解async/await、事件循环、并发模型  
-✅ **构建FastAPI应用** - 路由、依赖注入、请求响应处理  
-✅ **设计RESTful API** - 遵循REST规范，设计清晰的API接口  
-✅ **实现数据验证** - 使用Pydantic进行请求验证和序列化  
-✅ **集成数据库ORM** - 使用SQLAlchemy操作PostgreSQL  
+✅ **运用Python高级特性** - 使用装饰器、上下文管理器、生成器等
+✅ **掌握异步编程** - 理解async/await、事件循环、并发模型
+✅ **构建FastAPI应用** - 路由、依赖注入、请求响应处理
+✅ **设计RESTful API** - 遵循REST规范，设计清晰的API接口
+✅ **实现数据验证** - 使用Pydantic进行请求验证和序列化
+✅ **集成数据库ORM** - 使用SQLAlchemy操作PostgreSQL
 
 ---
 
@@ -458,12 +458,12 @@ async def use_async_context():
 
 **FastAPI的优势**:
 
-✅ **高性能** - 基于Starlette和Pydantic，性能接近Node.js/Go  
-✅ **自动文档** - 自动生成交互式API文档（Swagger UI）  
-✅ **类型提示** - 利用Python类型注解实现数据验证  
-✅ **现代特性** - 原生支持async/await  
-✅ **易于学习** - 直观的API设计，快速上手  
-✅ **生态完善** - 支持OAuth、WebSocket、GraphQL等  
+✅ **高性能** - 基于Starlette和Pydantic，性能接近Node.js/Go
+✅ **自动文档** - 自动生成交互式API文档（Swagger UI）
+✅ **类型提示** - 利用Python类型注解实现数据验证
+✅ **现代特性** - 原生支持async/await
+✅ **易于学习** - 直观的API设计，快速上手
+✅ **生态完善** - 支持OAuth、WebSocket、GraphQL等
 
 **性能对比**:
 
@@ -1823,64 +1823,64 @@ pytest tests/ --cov=app --cov-report=html
 ### 选择题（每题10分，共100分）
 
 1. **以下哪个不是Python装饰器的典型用途？**
-   - A. 日志记录
-   - B. 性能计时
-   - C. 权限验证
-   - D. 内存管理 ⚠️ 这是垃圾回收器的工作
+ - A. 日志记录
+ - B. 性能计时
+ - C. 权限验证
+ - D. 内存管理 ⚠️ 这是垃圾回收器的工作
 
-2. **`async` 和 `await` 的主要作用？**
-   - A. 提高代码执行速度
-   - B. 实现非阻塞的异步IO操作
-   - C. 自动并行化代码
-   - D. 替代多线程
+2. **`async` 和`await` 的主要作用？**
+ - A. 提高代码执行速度
+ - B. 实现非阻塞的异步IO操作
+ - C. 自动并行化代码
+ - D. 替代多线程
 
-3. **FastAPI中 `Depends()` 的作用？**
-   - A. 定义路由
-   - B. 实现依赖注入
-   - C. 数据验证
-   - D. 错误处理
+3. **FastAPI中`Depends()` 的作用？**
+ - A. 定义路由
+ - B. 实现依赖注入
+ - C. 数据验证
+ - D. 错误处理
 
 4. **RESTful API中，PUT和PATCH的区别？**
-   - A. 没有区别
-   - B. PUT用于创建，PATCH用于更新
-   - C. PUT整体替换资源，PATCH部分更新
-   - D. PATCH比PUT更安全
+ - A. 没有区别
+ - B. PUT用于创建，PATCH用于更新
+ - C. PUT整体替换资源，PATCH部分更新
+ - D. PATCH比PUT更安全
 
 5. **Pydantic的主要作用？**
-   - A. Web框架
-   - B. 数据验证和序列化
-   - C. 数据库ORM
-   - D. 任务队列
+ - A. Web框架
+ - B. 数据验证和序列化
+ - C. 数据库ORM
+ - D. 任务队列
 
-6. **SQLAlchemy ORM中 `relationship()` 的作用？**
-   - A. 定义表之间的关系
-   - B. 创建索引
-   - C. 设置主键
-   - D. 定义外键约束
+6. **SQLAlchemy ORM中`relationship()` 的作用？**
+ - A. 定义表之间的关系
+ - B. 创建索引
+ - C. 设置主键
+ - D. 定义外键约束
 
 7. **HTTP状态码 422 表示什么？**
-   - A. 未找到资源
-   - B. 服务器内部错误
-   - C. 无法处理的实体（验证失败）
-   - D. 未授权
+ - A. 未找到资源
+ - B. 服务器内部错误
+ - C. 无法处理的实体（验证失败）
+ - D. 未授权
 
 8. **`yield` 在函数中的作用？**
-   - A. 返回值并结束函数
-   - B. 创建生成器，暂停执行并返回值
-   - C. 导入模块
-   - D. 定义协程
+ - A. 返回值并结束函数
+ - B. 创建生成器，暂停执行并返回值
+ - C. 导入模块
+ - D. 定义协程
 
 9. **FastAPI中间件的执行顺序？**
-   - A. 按照添加顺序执行
-   - B. 反向执行
-   - C. 随机执行
-   - D. 并行执行
+ - A. 按照添加顺序执行
+ - B. 反向执行
+ - C. 随机执行
+ - D. 并行执行
 
 10. **以下哪个不是好的API设计实践？**
-    - A. 使用名词复数作为资源名
-    - B. 返回统一的响应格式
-    - C. 在URL中包含动词（如/getUsers）⚠️ 这违反了REST规范
-    - D. 合理使用HTTP状态码
+ - A. 使用名词复数作为资源名
+ - B. 返回统一的响应格式
+ - C. 在URL中包含动词（如/getUsers）⚠️ 这违反了REST规范
+ - D. 合理使用HTTP状态码
 
 ### 答案与解析
 
@@ -1920,11 +1920,11 @@ pytest tests/ --cov=app --cov-report=html
 3. _________________________________________________
 
 ### 遇到的挑战
-1. **问题**: 
-   **解决**: 
+1. **问题**:
+ **解决**:
 
-2. **问题**: 
-   **解决**: 
+2. **问题**:
+ **解决**:
 
 ### 明日预告
 **Day 4: 数据库技术应用** 将涵盖：
@@ -1945,21 +1945,21 @@ pytest tests/ --cov=app --cov-report=html
 
 ### 项目概览
 
-**项目名称**: Blog API - RESTful博客系统后端  
-**路径**: `03-后端开发技能提升/blog-api/`  
-**完成度**: ✅ 100%  
-**文件数**: 14个核心文件  
-**代码量**: 1500+ 行  
+**项目名称**: Blog API - RESTful博客系统后端
+**路径**:`03-后端开发技能提升/blog-api/`
+**完成度**: ✅ 100%
+**文件数**: 14个核心文件
+**代码量**: 1500+ 行
 **技术栈**: FastAPI + SQLAlchemy + PostgreSQL + JWT认证 + Pydantic
 
 ### 核心特性
 
-✅ **用户系统** - 注册/登录/JWT认证/用户CRUD  
-✅ **文章管理** - 创建/编辑/删除/分页查询  
-✅ **数据库ORM** - SQLAlchemy模型定义 + 关系映射  
-✅ **数据验证** - Pydantic Schema请求/响应验证  
-✅ **统一错误处理** - 全局异常处理器 + 自定义异常类  
-✅ **Swagger文档** - 自动生成交互式API文档  
+✅ **用户系统** - 注册/登录/JWT认证/用户CRUD
+✅ **文章管理** - 创建/编辑/删除/分页查询
+✅ **数据库ORM** - SQLAlchemy模型定义 + 关系映射
+✅ **数据验证** - Pydantic Schema请求/响应验证
+✅ **统一错误处理** - 全局异常处理器 + 自定义异常类
+✅ **Swagger文档** - 自动生成交互式API文档
 
 ### 项目架构
 
@@ -1997,12 +1997,12 @@ blog-api/
 
 | 方法 | 路径 | 功能 | 认证 |
 |------|------|------|------|
-| POST | `/api/register` | 用户注册 | ❌ |
-| POST | `/api/login` | 登录获取JWT | ❌ |
-| GET | `/api/users/me` | 获取当前用户 | ✅ JWT |
-| GET | `/api/users/{id}` | 获取用户详情 | ✅ JWT |
-| PUT | `/api/users/{id}` | 更新用户信息 | ✅ JWT |
-| DELETE | `/api/users/{id}` | 删除用户 | ✅ JWT(Admin) |
+| POST |`/api/register` | 用户注册 | ❌ |
+| POST |`/api/login` | 登录获取JWT | ❌ |
+| GET |`/api/users/me` | 获取当前用户 | ✅ JWT |
+| GET |`/api/users/{id}` | 获取用户详情 | ✅ JWT |
+| PUT |`/api/users/{id}` | 更新用户信息 | ✅ JWT |
+| DELETE |`/api/users/{id}` | 删除用户 | ✅ JWT(Admin) |
 
 ### 技术亮点
 

@@ -1,7 +1,7 @@
 # Day 6 实战项目：AI工具服务
 
-> **项目名称**: ai-tools  
-> **项目描述**: 集成DeepSeek、豆包等国内大模型API的统一AI工具服务  
+> **项目名称**: ai-tools
+> **项目描述**: 集成DeepSeek、豆包等国内大模型API的统一AI工具服务
 > **技术栈**: Python + FastAPI + DeepSeek API + 豆包(火山引擎) API
 
 ---
@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 ### 2. 配置API密钥
 
-创建 `.env` 文件：
+创建`.env` 文件：
 
 ```bash
 # DeepSeek API配置
@@ -76,11 +76,11 @@ python test_ai_api.py
 
 | 方法 | 端点 | 描述 |
 |------|------|------|
-| POST | `/api/chat` | 统一对话接口 |
-| POST | `/api/chat/stream` | 流式对话 |
-| POST | `/api/summarize` | 文本摘要 |
-| POST | `/api/translate` | 文本翻译 |
-| POST | `/api/generate-code` | 代码生成 |
+| POST |`/api/chat` | 统一对话接口 |
+| POST |`/api/chat/stream` | 流式对话 |
+| POST |`/api/summarize` | 文本摘要 |
+| POST |`/api/translate` | 文本翻译 |
+| POST |`/api/generate-code` | 代码生成 |
 
 ---
 

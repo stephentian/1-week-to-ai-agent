@@ -1,7 +1,7 @@
 # Day 4 实战项目：数据库缓存系统
 
-> **项目名称**: cache-demo  
-> **项目描述**: 基于 Redis + PostgreSQL 的多级缓存系统演示  
+> **项目名称**: cache-demo
+> **项目描述**: 基于 Redis + PostgreSQL 的多级缓存系统演示
 > **技术栈**: Python + FastAPI + SQLAlchemy + Redis + PostgreSQL
 
 ---
